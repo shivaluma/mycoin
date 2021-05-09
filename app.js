@@ -1,16 +1,20 @@
-const express = require("express")
-const compression = require("compression")
-const app = express()
+const mycoin = require('./lib/mycoin');
 
-app.use(express.json())
-app.use(compression())
+const argv = require('yargs')
+  .usage('Usage: $0 [options]')
+  .alias('a', 'host')
+  .describe('a', 'Host address. (localhost by default)')
+  .alias('p', 'port')
+  .describe('p', 'HTTP port. (6767 by default)')
+  .alias('l', 'log-level')
+  .describe(
+    'l',
+    'Log level (7=dir, debug, time and trace; 6=log and info; 4=warn; 3=error, assert; 6 by default).'
+  )
+  .describe('peers', 'Peers list.')
+  .describe('name', 'Node name/identifier.')
+  .array('peers')
+  .help('h')
+  .alias('h', 'help').argv;
 
-const PORT = process.env.PORT || 3000;
-
-app.use("/", (req, res) => {
-  return res.send("hihi")
-})
-
-app.listen(PORT, () => {
-  console.log("Server is listen on port : " + PORT);
-})
+mycoin(argv.host, argv.port, argv.peers, argv.logLevel, argv.name);
