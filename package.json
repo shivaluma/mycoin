@@ -1,8 +1,12 @@
 {
   "dependencies": {
+    "bitcoinjs-lib": "^5.2.0",
     "body-parser": "^1.19.0",
+    "bs58": "^4.0.1",
+    "bytebuffer": "^5.0.1",
     "cli-color": "^2.0.0",
     "compression": "^1.7.4",
+    "cors": "^2.8.5",
     "elliptic": "^6.5.4",
     "es6-error": "^4.1.1",
     "express": "^4.17.1",
@@ -10,7 +14,7 @@
     "got": "^11.8.2",
     "ramda": "^0.27.1",
     "superagent": "^6.1.0",
-    "threads": "^1.6.4",
+    "threads": "^0.12.0",
     "timeago.js": "^4.0.2",
     "yargs": "^17.0.1"
   },
@@ -19,6 +23,6 @@
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon --ignore data app.js"
   }
 }
